@@ -7,10 +7,14 @@ import { tranformsLinkNodeToUnfurledNode } from './transformLinkToUnfurledNode';
 import { Node } from 'unist';
 import { MetadataInterface, OEmbedMetadata, OpenGraphMetadata, TwitterMetadata, UnfurlMetadata } from './interfaces';
 
-export default async (
-  { markdownAST, markdownNode, cache, reporter }: { markdownAST: any; markdownNode: any; cache: any; reporter: any },
-  rawOptions: any,
-) => {
+interface TransformerOptions {
+  marker: string;
+  markdownAST: any;
+  markdownNode: any;
+  cache: any;
+  reporter: any;
+}
+export default async ({ markdownAST, markdownNode, cache, reporter, marker }: TransformerOptions, rawOptions: any) => {
   try {
     const options = rawOptions;
 
@@ -27,7 +31,6 @@ export default async (
     }
 
     const nodes = selectPossibleLinkNodes(markdownAST);
-    ƒ;
     if (nodes.length > 0) {
       const results = await Promise.all(
         nodes.map((node: any) => processNode(node, options, processedUrlsJSON, reporter)),
