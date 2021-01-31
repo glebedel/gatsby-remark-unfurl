@@ -39,7 +39,7 @@ export default async ({ markdownAST, markdownNode, cache, reporter, marker }: Tr
       logResults(results, markdownNode, reporter);
     }
   } catch (error) {
-    // reporter.error(`gatsby-remark-link-unfurl: Error processing links`, error);
+    reporter.error(`gatsby-remark-link-unfurl: Error processing links`, error);
   }
 };
 
