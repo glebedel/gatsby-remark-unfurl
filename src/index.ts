@@ -56,7 +56,7 @@ const processNode = async (
       processedUrl[url] = {
         title: twitter.title ?? openGraph?.title ?? metaData.title,
         description: twitter?.description ?? openGraph?.description ?? metaData.description,
-        url: openGraph?.url ?? url,
+        url: url ?? openGraph?.url,
         video: openGraph?.videos?.[0] || undefined,
         image: twitter?.images?.[0] || openGraph?.images?.[0] || undefined,
         logo: metaData.favicon,
