@@ -2,15 +2,12 @@ const logResults = (results, node, reporter) => {
   let successfulEmbedsCount = 0;
   let failedEmbedsCount = 0;
   let unconformingEmbedsCount = 0;
-  let message = "";
+  let message = '';
 
   for (const result of results) {
     if (result instanceof Error) {
       failedEmbedsCount++;
-      reporter.error(
-        `gatsby-remark-link-unfurl: Error embedding ${result.url}`,
-        result
-      );
+      reporter.error(`gatsby-remark-link-unfurl: Error embedding ${result.url}`, result);
     } else if (result) {
       successfulEmbedsCount++;
     } else {

@@ -7,7 +7,8 @@
   "homepage": "https://github.com/hgezim/gatsby-remark-link-unfurl",
   "repository": "https://github.com/hgezim/gatsby-remark-link-unfurl",
   "scripts": {
-    "prepublish": "rm -rf dist/ && tsc"
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "prepublish": "npm run lint && rm -rf dist/ && tsc"
   },
   "author": "guillaume.lebedel@gmail.com",
   "keywords": [
@@ -20,12 +21,28 @@
   "license": "MIT",
   "dependencies": {
     "mustache": "^4.1.0",
-    "unfurl.js": "^5.2.2",
+    "unfurl.js": "^5.2.3",
     "unist-util-select": "^3.0.4"
   },
   "devDependencies": {
     "@types/node": "^13.13.2",
     "@types/unist": "^2.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1",
     "release-it": "^14.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
   }
 }
