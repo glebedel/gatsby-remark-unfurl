@@ -10,7 +10,7 @@
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "prepublish": "npm run build",
     "build": "npm run lint && rm -rf dist/ && tsc",
-    "release": "release-it --verbose --ci]"
+    "release": "release-it --verbose --ci"
   },
   "author": "guillaume.lebedel@gmail.com",
   "keywords": [
