@@ -47,7 +47,6 @@ const processNode = async (
   try {
     const url = node.children[0].url as string;
     const metaData: UnfurlMetadata = await unfurl(url);
-    reporter.info(node, metaData);
 
     const twitter: TwitterMetadata = metaData.twitter_card?.[0];
     const openGraph: OpenGraphMetadata = metaData.open_graph?.[0];
