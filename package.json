@@ -8,7 +8,8 @@
   "repository": "https://github.com/hgezim/gatsby-remark-link-unfurl",
   "scripts": {
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-    "prepublish": "npm run lint && rm -rf dist/ && tsc"
+    "prepublish": "npm run lint && rm -rf dist/ && tsc",
+    "release": "release-it"
   },
   "author": "guillaume.lebedel@gmail.com",
   "keywords": [
@@ -45,5 +46,10 @@
     "*.{js,ts,tsx}": [
       "eslint --fix"
     ]
+  },
+  "release-it": {
+    "github": {
+      "release": true
+    }
   }
 }
