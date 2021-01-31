@@ -73,7 +73,6 @@ a.gatsby-remark-link-unfurl__container {
   margin: 0 auto;
   font-size: 21px;
   line-height: 24px;
-  font-weight: lighter;
   max-width: 500px;
   background-color: #fff;
   border-width: 1px;
@@ -81,8 +80,7 @@ a.gatsby-remark-link-unfurl__container {
   border-color: #e1e8ed;
   overflow: hidden;
   color: #181919;
-  font-family: InterUI, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Oxygen, Ubuntu,
-    Cantarell, 'Open Sans', sans-serif;
+  font-family: InterUI, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
   display: flex;
   text-decoration: none;
   opacity: 1;
@@ -92,7 +90,7 @@ a.gatsby-remark-link-unfurl__container {
   transition-property: background, border-color;
   will-change: background, border-color;
   flex-direction: column;
-  height: 382px;
+  /* height: 382px; */
 }
 
 a.gatsby-remark-link-unfurl__container:hover {
@@ -103,6 +101,8 @@ a.gatsby-remark-link-unfurl__container:hover {
 
 .gatsby-remark-link-unfurl__media {
   flex-shrink: 1;
+  object-fit: contain;
+  max-height:282px;
   flex-grow: 1;
   flex-basis: 0%;
   background: transparent no-repeat center center / cover;
@@ -136,6 +136,7 @@ a.gatsby-remark-link-unfurl__container:hover {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: grey;
 }
 
 .gatsby-remark-link-unfurl__description {
@@ -165,7 +166,8 @@ a.gatsby-remark-link-unfurl__container:hover {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin-top: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .gatsby-remark-link-unfurl__container footer span {
