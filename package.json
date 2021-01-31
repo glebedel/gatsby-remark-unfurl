@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "prepublish": "npm run build",
+    "dev": "tsc -w",
     "build": "npm run lint && rm -rf dist/ && tsc",
     "release": "release-it --verbose"
   },
