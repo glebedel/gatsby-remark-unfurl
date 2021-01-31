@@ -4,16 +4,10 @@ import { unfurl } from 'unfurl.js';
 import { selectPossibleLinkNodes } from './selectPossibleLinkNodes';
 import logResults from './logResults.js';
 import { tranformsLinkNodeToUnfurledNode } from './transformLinkToUnfurledNode';
-import { Node } from 'unist';
+import { Node, Parent } from 'unist';
 import { MetadataInterface, OEmbedMetadata, OpenGraphMetadata, TwitterMetadata, UnfurlMetadata } from './interfaces';
+import { TransformerOptions } from './types/gatsby';
 
-interface TransformerOptions {
-  marker: string;
-  markdownAST: any;
-  markdownNode: any;
-  cache: any;
-  reporter: any;
-}
 export default async ({ markdownAST, markdownNode, cache, reporter, marker }: TransformerOptions, rawOptions: any) => {
   try {
     const options = rawOptions;
@@ -45,13 +39,13 @@ export default async ({ markdownAST, markdownNode, cache, reporter, marker }: Tr
 
 // For each node this is the process
 const processNode = async (
-  node: any,
+  node: Parent,
   options: any,
   processedUrl: { [key: string]: MetadataInterface },
   reporter,
 ): Promise<Node> => {
   try {
-    const url = node.children[0].url;
+    const url = node.children[0].url as string;
     const metaData: UnfurlMetadata = await unfurl(url);
     reporter.info(node, metaData);
 
