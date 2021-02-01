@@ -7,7 +7,7 @@
   "homepage": "https://github.com/hgezim/gatsby-remark-link-unfurl",
   "repository": "https://github.com/hgezim/gatsby-remark-link-unfurl",
   "scripts": {
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "lint": "eslint '**/**/*.{js,ts,tsx}' --quiet --fix",
     "prepublish": "npm run build",
     "dev": "tsc -w",
     "build": "npm run lint && rm -rf dist/ && tsc",

@@ -47,18 +47,19 @@ const processNode = async (
   try {
     const url = node.children[0].url as string;
     const metaData: UnfurlMetadata = await unfurl(url);
+    reporter.info(node, metaData);
 
-    const twitter: TwitterMetadata = metaData.twitter_card?.[0];
-    const openGraph: OpenGraphMetadata = metaData.open_graph?.[0];
-    const oEmbed: OEmbedMetadata = metaData.oEmbed;
+    const twitter: TwitterMetadata = metaData?.twitter_card?.[0];
+    const openGraph: OpenGraphMetadata = metaData?.open_graph?.[0];
+    const oEmbed: OEmbedMetadata = metaData?.oEmbed;
     if (!processedUrl[url]) {
       processedUrl[url] = {
-        title: twitter.title ?? openGraph?.title ?? metaData.title,
+        title: twitter?.title ?? openGraph?.title ?? metaData.title,
         description: twitter?.description ?? openGraph?.description ?? metaData.description,
-        url,
+        url: twitter?.url ?? openGraph?.url ?? url,
         video: openGraph?.videos?.[0] || undefined,
         image: twitter?.images?.[0] || openGraph?.images?.[0] || undefined,
-        logo: metaData.favicon,
+        logo: metaData?.favicon,
         site: oEmbed?.provider_name || openGraph?.site_name || twitter?.site || undefined,
       };
     }
