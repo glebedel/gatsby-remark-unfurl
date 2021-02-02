@@ -46,7 +46,7 @@ const processNode = async (
 ): Promise<Node> => {
   try {
     const url = node.children[0].url as string;
-    const metaData: UnfurlMetadata = await unfurl(url);
+    const metaData: UnfurlMetadata = await unfurl(url, { oembed: true, follow: 2 });
     reporter.info(node, metaData);
 
     const twitter: TwitterMetadata = metaData?.twitter_card?.[0];
@@ -63,7 +63,6 @@ const processNode = async (
         site: oEmbed?.provider_name || openGraph?.site_name || twitter?.site || undefined,
       };
     }
-
     return tranformsLinkNodeToUnfurledNode(node, processedUrl[url], reporter);
   } catch (error) {
     error.url = node.url;
