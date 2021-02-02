@@ -49,8 +49,8 @@ const processNode = async (
     const metaData: UnfurlMetadata = await unfurl(url, { oembed: true, follow: 2 });
     reporter.info(node, metaData);
 
-    const twitter: TwitterMetadata = metaData?.twitter_card?.[0];
-    const openGraph: OpenGraphMetadata = metaData?.open_graph?.[0];
+    const twitter: TwitterMetadata = (metaData?.twitter_card as unknown) as TwitterMetadata;
+    const openGraph: OpenGraphMetadata = (metaData?.open_graph as unknown) as OpenGraphMetadata;
     const oEmbed: OEmbedMetadata = metaData?.oEmbed;
     if (!processedUrl[url]) {
       processedUrl[url] = {
